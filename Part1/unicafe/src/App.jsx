@@ -5,6 +5,11 @@ const Statistics = ({good, neutral, bad })=> {
   const average = total ? (good/total):0;
   const positivePercentage = total ? (good/total) * 100:0;
 
+  if (total=== 0) {
+
+    return <p>*no feedback given*</p>;
+  }
+
   return (
     <div>
       <h3>Statistics</h3>
