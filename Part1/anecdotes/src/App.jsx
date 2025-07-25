@@ -19,14 +19,20 @@ const App = () => {
   const  nextAnecdote = () => {
     const random = Math.floor(Math.random() * anecdotes.length)
     setSelected(random)
-  }
+  };
    
   const upVote = () => {
     const votesCopy = [...votes];
     votesCopy[selected] = +1;
     setVotes(votesCopy);
+  };
 
-  }
+const mostVotes = Math.max(...votes);
+const index=votes.indexOf(mostVotes);
+const mostVotedAnecdote = anecdotes[index];
+
+
+
   return (
     <div>
       <h2>Anecdote of the day</h2>
@@ -34,6 +40,18 @@ const App = () => {
       <p>has {votes[selected]} votes</p>
       <button onClick={upVote}>vote</button>
       <button onClick= {nextAnecdote}> Next Anecdote</button>
+      <h2>Most Voted Anecdote</h2>
+      {mostVotes > 0 ? (
+        <>
+          {mostVotedAnecdote}
+          <p>had {mostVotes} votes </p>
+        </>
+
+      ) : (
+        <p>No upvotes yet.</p>
+      )}
+
+
     </div>
   )
 }
